@@ -13,7 +13,7 @@ Route.get('api/v2/seguidores/:id','UserController.showSeguidores')
 Route.put('api/v2/email/:email','UserController.showEmail')
 Route.get('api/v2/user/lotes/:id','UserController.showLotesActivos')
 Route.get('api/v2/user/lotesEli/:id','UserController.showLotesEliminados')
-Route.put('api/v2/user/img/:id','UserController.updateimg')
+// Route.put('api/v2/user/img/:id','UserController.updateimg') update IMG
 Route.get('api/v2/inactivos','UserController.showInActivos')
 Route.get('api/v2/logs/:id','UserController.showLogs')
 Route.put('api/v2/actemail/:token','UserController.Actemail')
@@ -30,4 +30,4 @@ Route.get('api/v2/lote/muestras/:id','LoteController.showMuestras')
 //Croma
 Route.resource('api/v2/cromann','CromaNnController').apiOnly()
 Route.get('api/v2/todas/muestras','CromaNnController.AllMuestras')
-Route.put('api/v2/croma/img/:id','CromaNnController.updateimg')
+// Route.put('api/v2/croma/img/:id','CromaNnController.updateimg') udate IMG

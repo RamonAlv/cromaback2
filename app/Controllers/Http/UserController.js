@@ -230,35 +230,35 @@ class UserController {
     }
   }
 
-  async updateimg ({ params, request, response }) {
-    try {
-      const data = request.all()
-      const user = await User.findBy('id', params.id)
+  // async updateimg ({ params, request, response }) {
+  //   try {
+  //     const data = request.all()
+  //     const user = await User.findBy('id', params.id)
 
-      if(user){ 
-        const date = new Date()
-        const mes = date.getMonth()
-        const dia = date.getDay()
-        const año = date.getFullYear()
-        const hora = date.getHours()
-        const minuto = date.getMinutes()
-        const segundos = date.getSeconds()
-        const perfil = request.file('imgperfil')
-        user.imgperfil = dia+'-'+mes+'-'+año+'_'+hora+'-'+minuto+'-'+segundos+'.'+perfil.subtype
+  //     if(user){ 
+  //       const date = new Date()
+  //       const mes = date.getMonth()
+  //       const dia = date.getDay()
+  //       const año = date.getFullYear()
+  //       const hora = date.getHours()
+  //       const minuto = date.getMinutes()
+  //       const segundos = date.getSeconds()
+  //       const perfil = request.file('imgperfil')
+  //       user.imgperfil = dia+'-'+mes+'-'+año+'_'+hora+'-'+minuto+'-'+segundos+'.'+perfil.subtype
         
-        await perfil.move(Helpers.publicPath('users/'+user.id), {
-          name: user.imgperfil
-        })
+  //       await perfil.move(Helpers.publicPath('users/'+user.id), {
+  //         name: user.imgperfil
+  //       })
 
-        user.imgperfil = '/users/'+user.id+'/'+user.imgperfil
-        await user.save()
-        return response.send({user, message: 'usuario actualizado exitosamente' ,status:201})
-      }
-      return response.send({message: "El usuario que desea actualizar no existe", status: 404})
-    } catch (error) {
-      return response.send(error)
-    }
-  }
+  //       user.imgperfil = '/users/'+user.id+'/'+user.imgperfil
+  //       await user.save()
+  //       return response.send({user, message: 'usuario actualizado exitosamente' ,status:201})
+  //     }
+  //     return response.send({message: "El usuario que desea actualizar no existe", status: 404})
+  //   } catch (error) {
+  //     return response.send(error)
+  //   }
+  // }
 
   async Actemail ({ params, request, response }) {
     try {

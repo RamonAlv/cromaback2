@@ -74,24 +74,26 @@ class CromaNnController {
 
       cromann.user_id = data.user_id
       cromann.muestra_id = muestra.id
+      cromann.img = data.img
+      console.log(cromann.imag);
       await cromann.save()
 
-      const imag = request.file('img')
-      const mes = date.getMonth()
-      const dia = date.getDay()
-      const año = date.getFullYear()
-      const hora = date.getHours()
-      const minuto = date.getMinutes()
-      const segundos = date.getSeconds()
+      // const imag = request.file('img')
+      // const mes = date.getMonth()
+      // const dia = date.getDay()
+      // const año = date.getFullYear()
+      // const hora = date.getHours()
+      // const minuto = date.getMinutes()
+      // const segundos = date.getSeconds()
 
-      cromann.img = dia+'-'+mes+'-'+año+'_'+hora+'-'+minuto+'-'+segundos+'.'+imag.subtype
+      // cromann.img = dia+'-'+mes+'-'+año+'_'+hora+'-'+minuto+'-'+segundos+'.'+imag.subtype
 
-      await imag.move(Helpers.publicPath('cromaF/'+cromann.id), {
-        name: cromann.img
-      })
+      // await imag.move(Helpers.publicPath('cromaF/'+cromann.id), {
+      //   name: cromann.img
+      // })
 
-      cromann.img = '/cromaF/'+cromann.id+'/'+cromann.img
-      await cromann.save()
+      // cromann.img = '/cromaF/'+cromann.id+'/'+cromann.img
+      // await cromann.save()
 
       return response.send({muestra, cromann, status:201})
 
@@ -146,35 +148,35 @@ class CromaNnController {
       return response.send(error)
     }
   }
-  //Update only image
-  async updateimg ({ params, request, response }) {
-    try {
-      const date = new Date()
-      const cromann = await CromaNn.findBy('id', params.id)
-      if(cromann){ 
-        const imag = request.file('img')
-        const mes = date.getMonth()
-        const dia = date.getDay()
-        const año = date.getFullYear()
-        const hora = date.getHours()
-        const minuto = date.getMinutes()
-        const segundos = date.getSeconds()
+  //Update only image cancel
+  // async updateimg ({ params, request, response }) {
+  //   try {
+  //     const date = new Date()
+  //     const cromann = await CromaNn.findBy('id', params.id)
+  //     if(cromann){ 
+  //       const imag = request.file('img')
+  //       const mes = date.getMonth()
+  //       const dia = date.getDay()
+  //       const año = date.getFullYear()
+  //       const hora = date.getHours()
+  //       const minuto = date.getMinutes()
+  //       const segundos = date.getSeconds()
         
-        cromann.img = dia+'-'+mes+'-'+año+'_'+hora+'-'+minuto+'-'+segundos+'.'+imag.subtype
+  //       cromann.img = dia+'-'+mes+'-'+año+'_'+hora+'-'+minuto+'-'+segundos+'.'+imag.subtype
 
-        await imag.move(Helpers.publicPath('cromaF/'+cromann.id), {
-          name: cromann.img
-        })
+  //       await imag.move(Helpers.publicPath('cromaF/'+cromann.id), {
+  //         name: cromann.img
+  //       })
 
-        cromann.img = '/cromaF/'+cromann.id+'/'+cromann.img
-        await cromann.save()
-        return response.send({cromann, message: 'Imagen agregada exitosamente' ,status:201})
-      }
-      return response.send({message: "El Croma que desea actualizar no existe", status: 404})
-    } catch (error) {
-      return response.send(error)
-    }
-  }
+  //       cromann.img = '/cromaF/'+cromann.id+'/'+cromann.img
+  //       await cromann.save()
+  //       return response.send({cromann, message: 'Imagen agregada exitosamente' ,status:201})
+  //     }
+  //     return response.send({message: "El Croma que desea actualizar no existe", status: 404})
+  //   } catch (error) {
+  //     return response.send(error)
+  //   }
+  // }
 
   /**
    * Delete a cromann with id.
