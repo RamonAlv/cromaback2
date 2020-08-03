@@ -34,3 +34,5 @@ class UserSchema extends Schema {
 }
 
 module.exports = UserSchema
+
+// postgres://gtpvtphmoaohzl:3a03c8bf126e10c62a8efc65eb1906376dc84b558cb345b4f84bd93c4632edd9@ec2-54-157-78-113.compute-1.amazonaws.com:5432/dcjo7orngrsar
